@@ -85,7 +85,7 @@ export default function Home() {
       {/* Header */}
       <Navbar />
       {/* Main Content */}
-      <main className="p-4 space-y-4 bg-base-100">
+      <main className="p-4 space-y-4 bg-base-200">
         <h2 className="mb-4 text-lg">新着記事</h2>
         <ArticleList articles={articles} />
         {/* ページネーション */}
