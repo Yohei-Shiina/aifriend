@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +29,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="pastel">
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-base-100`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* Header */}
+        <Navbar />
+        {/* Main content */}
+        <div className="p-4 shadow-xs">{children}</div>
+        {/* Footer */}
+        <footer className="p-4">
+          <aside>
+            <Link href="/">
+              <Image
+                src="/logo-vertical-transparent.svg"
+                className="mb-4"
+                width={150}
+                height={31.5}
+                alt=""
+              />
+            </Link>
+            <p className="font-bold">AI Media powered by AI</p>
+            <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+          </aside>
+        </footer>
+      </body>
     </html>
   );
 }

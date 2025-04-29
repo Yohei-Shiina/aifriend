@@ -15,7 +15,7 @@ export default function ArticleList(props: ArticleListProps) {
   const { articles } = props;
   return (
     <>
-      <div className="space-y-2">
+      <div className="space-y-4">
         {articles.map((article) => (
           <Link href="#" key={article.id} className="block" aria-label={article.title}>
             <div className="flex flex-row gap-1">

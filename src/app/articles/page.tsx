@@ -1,11 +1,17 @@
 import ArticleList from "@/components/ArticleList";
-import Link from "next/link";
-
+import Pagination from "@/components/Pagniation";
 import TitleDivider from "@/components/TitleDivider";
 
-export default function Home() {
+type Article = {
+  id: number;
+  title: string;
+  image: string;
+  date: string;
+};
+
+export default function ArticlesPage() {
   // 仮データ
-  const articles = [
+  const articles: Article[] = [
     {
       id: 1,
       title: "AIが記事を書くAIメディアが今話題に？実際にAIに記事を書かせてみた！",
@@ -68,17 +74,25 @@ export default function Home() {
       image: "/randomImage1.webp",
       date: new Date().toLocaleString(),
     },
+    {
+      id: 11,
+      title: "おすすめクラウド型ホゲ管理システム（IDaaS）比較10選！特徴も解説",
+      image: "/randomImage1.webp",
+      date: new Date().toLocaleString(),
+    },
+    {
+      id: 12,
+      title: "おすすめクラウド型ホゲ管理システム（IDaaS）比較10選！特徴も解説",
+      image: "/randomImage1.webp",
+      date: new Date().toLocaleString(),
+    },
   ];
 
   return (
     <main className="space-y-4">
-      <TitleDivider title="新着記事" />
-      <ArticleList articles={articles.slice(0, 5)} />
-      <div className="flex justify-center">
-        <button className="btn btn-primary">
-          <Link href="/articles">全ての新着記事を見る</Link>
-        </button>
-      </div>
+      <TitleDivider title="全ての記事" />
+      <ArticleList articles={articles} />
+      <Pagination totalPages={2} />
     </main>
   );
 }
