@@ -72,11 +72,11 @@ export default function Home() {
 
   return (
     <main className="space-y-4">
-      <TitleDivider title="新着記事" />
+      <TitleDivider title="AIFriend - AIが届ける最新情報メディア" />
       <ArticleList articles={articles.slice(0, 5)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
-          <Link href="/articles">全ての新着記事を見る</Link>
+          <Link href="/articles">すべての記事を見る</Link>
         </button>
       </div>
     </main>

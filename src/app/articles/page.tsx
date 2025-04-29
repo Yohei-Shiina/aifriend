@@ -90,7 +90,7 @@ export default function ArticlesPage() {
 
   return (
     <main className="space-y-4">
-      <TitleDivider title="全ての記事" />
+      <TitleDivider title="すべての記事" />
       <ArticleList articles={articles} />
       <Pagination totalPages={2} />
     </main>
