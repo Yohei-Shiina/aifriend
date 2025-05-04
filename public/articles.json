@@ -2,7 +2,8 @@
   {
     "id": 1,
     "title": "AIが生成するアートがオークションで高額落札！その背景とは？",
-    "image": "/randomImage1.webp",
+    "content": "AIが生成するアートがオークションで高額落札された背景を解説します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-29T09:00:00Z",
     "updated_at": "2025-04-29T09:00:00Z",
     "published_at": "2025-04-29T09:00:00Z"
@@ -10,7 +11,8 @@
   {
     "id": 2,
     "title": "AIが医療現場を変える！最新の診断技術とは？",
-    "image": "/randomImage1.webp",
+    "content": "AIが医療現場を変える最新の診断技術について紹介します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-28T12:00:00Z",
     "updated_at": "2025-04-28T12:00:00Z",
     "published_at": "2025-04-28T12:00:00Z"
@@ -18,7 +20,8 @@
   {
     "id": 3,
     "title": "AIチャットボットが教育を支援！学校での活用事例",
-    "image": "/randomImage1.webp",
+    "content": "AIチャットボットが教育を支援する学校での活用事例をお届けします。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-27T15:00:00Z",
     "updated_at": "2025-04-27T15:00:00Z",
     "published_at": "2025-04-27T15:00:00Z"
@@ -26,7 +29,8 @@
   {
     "id": 4,
     "title": "AIが作曲した音楽が話題に！人間の感性に迫る",
-    "image": "/randomImage1.webp",
+    "content": "AIが作曲した音楽が話題になり、人間の感性に迫る内容です。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-26T18:00:00Z",
     "updated_at": "2025-04-26T18:00:00Z",
     "published_at": "2025-04-26T18:00:00Z"
@@ -34,7 +38,8 @@
   {
     "id": 5,
     "title": "AIが農業を効率化！スマート農業の未来",
-    "image": "/randomImage1.webp",
+    "content": "AIが農業を効率化するスマート農業の未来を探ります。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-25T09:00:00Z",
     "updated_at": "2025-04-25T09:00:00Z",
     "published_at": "2025-04-25T09:00:00Z"
@@ -42,7 +47,8 @@
   {
     "id": 6,
     "title": "AIが描く未来の都市デザインとは？",
-    "image": "/randomImage1.webp",
+    "content": "AIが描く未来の都市デザインについて考察します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-24T12:00:00Z",
     "updated_at": "2025-04-24T12:00:00Z",
     "published_at": "2025-04-24T12:00:00Z"
@@ -50,7 +56,8 @@
   {
     "id": 7,
     "title": "AIが解明する宇宙の謎！最新の研究成果",
-    "image": "/randomImage1.webp",
+    "content": "AIが解明する宇宙の謎と最新の研究成果を紹介します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-23T15:00:00Z",
     "updated_at": "2025-04-23T15:00:00Z",
     "published_at": "2025-04-23T15:00:00Z"
@@ -58,7 +65,8 @@
   {
     "id": 8,
     "title": "AIがスポーツの戦略を変える！データ分析の力",
-    "image": "/randomImage1.webp",
+    "content": "AIがスポーツの戦略を変えるデータ分析の力を解説します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-22T18:00:00Z",
     "updated_at": "2025-04-22T18:00:00Z",
     "published_at": "2025-04-22T18:00:00Z"
@@ -66,7 +74,8 @@
   {
     "id": 9,
     "title": "AIがファッション業界に革命を起こす！デザインの未来",
-    "image": "/randomImage1.webp",
+    "content": "AIがファッション業界に革命を起こすデザインの未来を探ります。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-21T09:00:00Z",
     "updated_at": "2025-04-21T09:00:00Z",
     "published_at": "2025-04-21T09:00:00Z"
@@ -74,7 +83,8 @@
   {
     "id": 10,
     "title": "AIが気候変動対策を支援！環境保護の新たな一歩",
-    "image": "/randomImage1.webp",
+    "content": "AIが気候変動対策を支援する環境保護の新たな一歩を紹介します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-20T12:00:00Z",
     "updated_at": "2025-04-20T12:00:00Z",
     "published_at": "2025-04-20T12:00:00Z"
@@ -82,7 +92,8 @@
   {
     "id": 11,
     "title": "AIが映画制作をサポート！脚本から編集まで",
-    "image": "/randomImage1.webp",
+    "content": "AIが映画制作をサポートする脚本から編集までの流れを解説します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-30T09:00:00Z",
     "updated_at": "2025-04-30T09:00:00Z",
     "published_at": "2025-04-30T09:00:00Z"
@@ -90,7 +101,8 @@
   {
     "id": 12,
     "title": "AIが食品業界を変革！レシピ開発の新時代",
-    "image": "/randomImage1.webp",
+    "content": "AIが食品業界を変革するレシピ開発の新時代を探ります。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-30T10:00:00Z",
     "updated_at": "2025-04-30T10:00:00Z",
     "published_at": "2025-04-30T10:00:00Z"
@@ -98,7 +110,8 @@
   {
     "id": 13,
     "title": "AIがゲーム開発を加速！プレイヤー体験の進化",
-    "image": "/randomImage1.webp",
+    "content": "AIがゲーム開発を加速し、プレイヤー体験の進化を実現します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-30T11:00:00Z",
     "updated_at": "2025-04-30T11:00:00Z",
     "published_at": "2025-04-30T11:00:00Z"
@@ -106,7 +119,8 @@
   {
     "id": 14,
     "title": "AIが医薬品開発を効率化！新薬誕生の裏側",
-    "image": "/randomImage1.webp",
+    "content": "AIが医薬品開発を効率化する新薬誕生の裏側を解説します。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-30T12:00:00Z",
     "updated_at": "2025-04-30T12:00:00Z",
     "published_at": "2025-04-30T12:00:00Z"
@@ -114,7 +128,8 @@
   {
     "id": 15,
     "title": "AIが交通システムを最適化！渋滞解消の鍵",
-    "image": "/randomImage1.webp",
+    "content": "AIが交通システムを最適化し、渋滞解消の鍵を探ります。",
+    "image_url": "/randomImage1.webp",
     "created_at": "2025-04-30T13:00:00Z",
     "updated_at": "2025-04-30T13:00:00Z",
     "published_at": "2025-04-30T13:00:00Z"
