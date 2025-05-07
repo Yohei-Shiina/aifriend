@@ -1,16 +1,12 @@
-import fs from "fs";
-import path from "path";
+import prisma from "@/lib/prisma";
+import { fetchArticles, sortArticlesByPublishedDateDesc } from "@/lib/articleUtils";
 
 import ArticleList from "@/components/ArticleList";
 import Pagination from "@/components/Pagniation";
 import TitleDivider from "@/components/TitleDivider";
 
-export default function ArticlesPage() {
-  // 仮データ
-  const filePath = path.join(process.cwd(), "public", "articles.json");
-  const jsonData = fs.readFileSync(filePath, "utf-8");
-  const articles = JSON.parse(jsonData);
-
+export default async function ArticlesPage() {
+  const articles = sortArticlesByPublishedDateDesc(await fetchArticles(prisma));
   return (
     <main className="space-y-4">
       <TitleDivider title="すべての記事" />
