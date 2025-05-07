@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <main className="space-y-4">
       <TitleDivider title="新着記事" />
-      <ArticleList articles={articles.slice(0, 5)} />
+      <ArticleList articles={articles.slice(0, 10)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
           <Link href="/articles">すべての記事を見る</Link>
