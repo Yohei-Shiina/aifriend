@@ -1,18 +1,18 @@
 import { PrismaClient } from '@root/generated/prisma/client';
 
-const prisma = new PrismaClient();
+type GlobalPrisma = typeof global & { _prisma?: PrismaClient };
+const globalForPrisma = global as GlobalPrisma;
 
-async function main() {
-  const articles = await prisma.articles.findMany()
-  console.log(articles)
-}
+export const prisma =
+  globalForPrisma._prisma ||
+  new PrismaClient({
+    log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : [],
+  });
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+// This is a work-around for the issue of hot reloading in Next.js
+// and Prisma Client. It ensures that the Prisma Client is not
+// re-initialized on every hot reload in development mode.
+if (process.env.NODE_ENV !== 'production') globalForPrisma._prisma = prisma;
+
+export { PrismaClient };
+export default prisma;
