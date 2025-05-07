@@ -2,13 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
+import { FetchArticleResult } from "@/lib/articleUtils";
+
 type ArticleListProps = {
-  articles: {
-    id: number;
-    title: string;
-    image: string;
-    date: string;
-  }[];
+  articles: FetchArticleResult;
 };
 
 export default function ArticleList(props: ArticleListProps) {
@@ -21,7 +18,7 @@ export default function ArticleList(props: ArticleListProps) {
             <div className="flex flex-row gap-1">
               <div className="relative aspect-16/9 w-3/7">
                 <Image
-                  src={article.image}
+                  src={article.image_url}
                   alt=""
                   layout="fill" // Fill the parent container
                   objectFit="cover" // Ensure the image covers the container
@@ -31,8 +28,11 @@ export default function ArticleList(props: ArticleListProps) {
                 <h2 className="text-sm line-clamp-3" aria-hidden="true">
                   {article.title}
                 </h2>
-                <time className="text-xs text-base-content" dateTime={article.date}>
-                  {dayjs(article.date).format("YYYY年M月D日")}
+                <time
+                  className="text-xs text-base-content"
+                  dateTime={article.published_at.toLocaleString()}
+                >
+                  {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
                 </time>
               </div>
             </div>

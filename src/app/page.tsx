@@ -1,15 +1,12 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 
+import prisma from "@/lib/prisma";
+import { fetchArticles, sortArticlesByPublishedDateDesc } from "@/lib/articleUtils";
 import ArticleList from "@/components/ArticleList";
 import TitleDivider from "@/components/TitleDivider";
 
 export default async function Home() {
-  // 仮データ
-  const filePath = path.join(process.cwd(), "public", "articles.json");
-  const jsonData = fs.readFileSync(filePath, "utf-8");
-  const articles = JSON.parse(jsonData);
+  const articles = sortArticlesByPublishedDateDesc(await fetchArticles(prisma));
 
   return (
     <main className="space-y-4">
