@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { ROOT_PATH, ABOUT_PATH } from "@root/config/routes";
+
 const TAB_INDEX_HAMBURGER_MENU = 0;
 
 export default function Navbar() {
@@ -8,7 +10,7 @@ export default function Navbar() {
     <header className="relative shadow-xs">
       <nav className="navbar px-4">
         <div className="navbar-start">
-          <Link href="/">
+          <Link href={ROOT_PATH}>
             <Image
               src="/logo-vertical-transparent.svg"
               className=""
@@ -41,10 +43,10 @@ export default function Navbar() {
               className="dropdown-content menu bg-base-100 rounded-box z-1 w-45 p-2 shadow-sm"
             >
               <li>
-                <Link href="/">TOP</Link>
+                <Link href={ROOT_PATH}>TOP</Link>
               </li>
               <li>
-                <Link href="/about">AIFriendとは</Link>
+                <Link href={ABOUT_PATH}>AIFriendとは</Link>
               </li>
             </ul>
           </div>

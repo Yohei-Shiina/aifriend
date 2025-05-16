@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import { FetchArticleResult } from "@/lib/articleUtils";
 
 type ArticleListProps = {
-  articles: FetchArticleResult;
+  articles: FetchArticleResult[];
 };
 
 export default function ArticleList(props: ArticleListProps) {

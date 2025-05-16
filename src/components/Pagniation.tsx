@@ -1,25 +1,28 @@
-"use client";
-import { useState } from "react";
+import Link from "next/link";
 
-export default function Pagination({ totalPages }: { totalPages: number }) {
-  const [currentPage, setCurrentPage] = useState(1);
+import { ARTICLES_PAGE_PREFIX } from "@root/config/routes";
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
+export default function Pagination({
+  totalPages,
+  selectedPage,
+}: {
+  totalPages: number;
+  selectedPage: number;
+}) {
   return (
     <div className="join flex justify-center">
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-        <input
-          key={page}
-          className={`join-item btn btn-square ${page === currentPage ? "btn-active" : ""}`}
-          type="radio"
-          name="pagination"
-          aria-label={`${page}`}
-          checked={page === currentPage}
-          onChange={() => handlePageChange(page)}
-        />
+        <Link key={page} href={`${ARTICLES_PAGE_PREFIX}/${page}`} prefetch={true}>
+          <input
+            key={page}
+            className={`join-item btn btn-square ${page === selectedPage ? "btn-active" : ""}`}
+            type="radio"
+            name="pagination"
+            aria-label={`${page}`}
+            defaultChecked={page === selectedPage}
+            readOnly
+          />
+        </Link>
       ))}
     </div>
   );
