@@ -5,7 +5,7 @@ import { fetchArticles } from "@/lib/articleUtils";
 export default async function Crousell() {
   const articles = await fetchArticles(prisma);
   return (
-    <>
+    <div>
       <div className="carousel w-full">
         {articles.slice(0, 4).map((article, index) => {
           const itemKey = index;
@@ -33,6 +33,6 @@ export default async function Crousell() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
