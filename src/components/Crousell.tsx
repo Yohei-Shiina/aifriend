@@ -22,7 +22,7 @@ export default async function Crousell() {
           );
         })}
       </div>
-      <div className="flex w-full justify-center gap-2 py-2">
+      <div className="flex w-full justify-center gap-2 pb-2">
         {articles.slice(0, 4).map((article, index) => {
           const itemKey = index;
           const itemId = index + 1;
