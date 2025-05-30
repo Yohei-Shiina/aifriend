@@ -7,7 +7,7 @@ const TAB_INDEX_HAMBURGER_MENU = 0;
 
 export default function Navbar() {
   return (
-    <header className="relative shadow-xs">
+    <header className="shadow-xs sticky top-0 z-1 bg-base-100">
       <nav className="navbar px-4">
         <div className="navbar-start">
           <Link href={ROOT_PATH}>
