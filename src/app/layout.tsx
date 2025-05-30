@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="pastel">
+    <html lang="en" data-theme="pastel" className="scroll-pt-16 scroll-smooth">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Header */}
         <Navbar />
