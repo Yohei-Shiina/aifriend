@@ -31,11 +31,13 @@ export default function RootLayout({
     <html lang="en" data-theme="pastel" className="scroll-pt-16 scroll-smooth">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Header */}
-        <Navbar />
+        <div className="container mx-auto">
+          <Navbar />
+        </div>
         {/* Main content */}
-        <div className="p-4 shadow-xs">{children}</div>
+        <div className="container mx-auto p-4 shadow-xs">{children}</div>
         {/* Footer */}
-        <footer className="p-4">
+        <footer className="p-4 container mx-auto">
           <aside>
             <Link href="/">
               <Image
