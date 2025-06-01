@@ -15,25 +15,23 @@ export default function ArticleList(props: ArticleListProps) {
       <div className="space-y-4">
         {articles.map((article) => (
           <Link href="#" key={article.id} className="block" aria-label={article.title}>
-            <div className="flex flex-row gap-1">
-              <div className="relative aspect-16/9 w-3/7">
+            <div className="card bg-base-100 w-full shadow-sm rounded-lg overflow-hidden">
+              <div className="relative w-full h-40">
                 <Image
                   src={article.image_url}
-                  alt=""
+                  alt={article.title}
                   layout="fill" // Fill the parent container
                   objectFit="cover" // Ensure the image covers the container
                 />
               </div>
-              <div className="flex flex-col gap-1 w-4/7 p-1">
-                <h2 className="text-sm line-clamp-3" aria-hidden="true">
-                  {article.title}
-                </h2>
+              <div className="card-body">
                 <time
                   className="text-xs text-base-content"
                   dateTime={article.published_at.toLocaleString()}
                 >
                   {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
                 </time>
+                <h2 className="card-title">{article.title}</h2>
               </div>
             </div>
           </Link>

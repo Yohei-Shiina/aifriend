@@ -15,8 +15,39 @@ export default async function Home() {
 
   return (
     <main className="space-y-4">
-      <TitleDivider title="新着記事" />
+      {/* uncomment when special articles or something else are ready */}
+      {/* <div className="space-y-4 mb-6">
+        {articles.slice(0, 3).map((article) => {
+          return (
+            <div
+              key={article.id}
+              className="card card-side bg-base-100 shadow-sm rounded-lg overflow-hidden"
+            >
+              <div className="relative h-20 w-30 flex-shrink-0">
+                <Image
+                  src={article.image_url}
+                  alt={article.image_url}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="card-body p-0 px-4">
+                <h2 className="card-title">{article.title}</h2>
+                <time
+                  className="text-xs text-base-content"
+                  dateTime={article.published_at.toLocaleString()}
+                >
+                  {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
+                </time>
+              </div>
+            </div>
+          );
+        })}
+      </div> */}
+
       <Crousell />
+
+      <TitleDivider title="新着記事" />
       <ArticleList articles={articles.slice(0, topArticlesCount)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
