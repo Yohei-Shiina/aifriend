@@ -31,9 +31,7 @@ export default function RootLayout({
     <html lang="en" data-theme="pastel" className="scroll-pt-16 scroll-smooth">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {/* Header */}
-        <div className="container mx-auto">
-          <Navbar />
-        </div>
+        <Navbar />
         {/* Main content */}
         <div className="container mx-auto p-4 shadow-xs">{children}</div>
         {/* Footer */}

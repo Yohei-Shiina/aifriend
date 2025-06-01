@@ -16,7 +16,7 @@ export default function ArticleList(props: ArticleListProps) {
         {articles.map((article) => (
           <Link href="#" key={article.id} className="block" aria-label={article.title}>
             <div className="card bg-base-100 w-full shadow-sm rounded-lg overflow-hidden">
-              <div className="relative w-full h-40">
+              <div className="relative w-full h-50">
                 <Image
                   src={article.image_url}
                   alt={article.title}
