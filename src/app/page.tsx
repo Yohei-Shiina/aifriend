@@ -53,7 +53,7 @@ export default async function Home() {
         <SectionTitle title="新着AIニュース" description="さぁ、今日も新鮮な記事を見てみよう！" />
       </div>
       <ArticleList articles={articles.slice(0, topArticlesCount)} />
-      <div className="flex justify-center">
+      <div className="flex justify-center mb-6">
         <button className="btn btn-primary">
           <Link href={`${ARTICLES_PAGE_PREFIX}/1`}>すべての記事を見る</Link>
         </button>
