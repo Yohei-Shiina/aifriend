@@ -12,7 +12,7 @@ export default function ArticleList(props: ArticleListProps) {
   const { articles } = props;
   return (
     <>
-      <div className="space-y-4">
+      <div className="space-y-6">
         {articles.map((article) => (
           <Link href="#" key={article.id} className="block" aria-label={article.title}>
             <div className="card bg-base-100 w-full shadow-sm rounded-lg overflow-hidden">

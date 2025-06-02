@@ -14,8 +14,8 @@ export default async function Home() {
   const articles = await fetchArticles(prisma);
 
   return (
-    <main className="space-y-4">
-      {/* uncomment when special articles or something else are ready */}
+    <main className="space-y-6">
+      {/* TODO: uncomment when special articles or something else are ready */}
       {/* <div className="space-y-4 mb-6">
         {articles.slice(0, 3).map((article) => {
           return (

@@ -16,7 +16,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
   const articles = await fetchArticlesByPage(prisma, page, ITEMS_PER_PAGE);
 
   return (
-    <main className="space-y-4">
+    <main className="space-y-6">
       <TitleDivider title="すべての記事" />
       <ArticleList articles={articles} />
       <Pagination totalPages={totalPages} selectedPage={page} />
