@@ -16,7 +16,7 @@ export default function ArticleList(props: ArticleListProps) {
         {articles.map((article) => (
           <Link
             key={article.id}
-            href={`${article.id}`}
+            href={`/articles/${article.id}`}
             className="card bg-base-100 shadow-sm rounded-lg overflow-hidden"
             aria-label={article.title}
           >
