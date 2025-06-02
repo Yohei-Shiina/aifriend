@@ -5,7 +5,7 @@ import { fetchPageCount, fetchArticlesByPage } from "@/lib/articleUtils";
 
 import ArticleList from "@/components/ArticleList";
 import Pagination from "@/components/Pagniation";
-import TitleDivider from "@/components/TitleDivider";
+import SectionTitle from "@/components/SectionTitle";
 
 const ITEMS_PER_PAGE = articlesConfig.articlesPerPage;
 
@@ -17,7 +17,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
 
   return (
     <main className="space-y-6">
-      <TitleDivider title="すべての記事" />
+      <SectionTitle title="すべての記事" description="過去のAIニュースはここから見てみよう！" />
       <ArticleList articles={articles} />
       <Pagination totalPages={totalPages} selectedPage={page} />
     </main>

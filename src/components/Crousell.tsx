@@ -6,7 +6,7 @@ export default async function Crousell() {
   const articles = await fetchArticles(prisma);
   return (
     <div className="carousel w-full">
-      {articles.slice(0, 4).map((article, index, _articles) => {
+      {articles.slice(0, 3).map((article, index, _articles) => {
         const itemLey = index;
         const itemId = index + 1;
         const prev = index === 0 ? _articles.length : index;
