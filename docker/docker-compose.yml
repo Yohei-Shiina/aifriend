@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: aifriend_dev
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  dbeaver:
+    image: dbeaver/dbeaver-ce
+    container_name: dbeaver
+    environment:
+      - DISPLAY=host.docker.internal:0
+      - X11_USE_EGL=1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
+  dbeaver-data:

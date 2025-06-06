@@ -1,95 +1,63 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
 
-export default function Home() {
+import { ARTICLES_PAGE_PREFIX } from "@root/config/routes";
+import prisma from "@/lib/prisma";
+import { fetchArticles } from "@/lib/articleUtils";
+import ArticleList from "@/components/ArticleList";
+import SectionTitle from "@/components/SectionTitle";
+// import Crousell from "@/components/Crousell";
+
+import articlesConfig from "@root/config/articles.json";
+const topArticlesCount = articlesConfig.topArticlesCount;
+
+export default async function Home() {
+  const articles = await fetchArticles(prisma);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="container mx-auto p-4 space-y-4">
+      {/* TODO: uncomment when special articles or something else are ready */}
+      {/* <div className="space-y-4 mb-6">
+        {articles.slice(0, 3).map((article) => {
+          return (
+            <div
+              key={article.id}
+              className="card card-side bg-base-100 shadow-sm rounded-lg overflow-hidden"
+            >
+              <div className="relative h-20 w-30 flex-shrink-0">
+                <Image
+                  src={article.image_url}
+                  alt={article.image_url}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="card-body p-0 px-4">
+                <h2 className="card-title">{article.title}</h2>
+                <time
+                  className="text-xs text-base-content"
+                  dateTime={article.published_at.toLocaleString()}
+                >
+                  {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
+                </time>
+              </div>
+            </div>
+          );
+        })}
+      </div> */}
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* TODO: uncomment when special articles or something else are ready */}
+      {/* <div className="mb-14">
+        <Crousell />
+      </div> */}
+      <div className="mb-6">
+        <SectionTitle title="新着AIニュース" description="さぁ、今日も新鮮な記事を見てみよう！" />
+      </div>
+      <ArticleList articles={articles.slice(0, topArticlesCount)} />
+      <div className="flex justify-center">
+        <button className="btn btn-primary">
+          <Link href={`${ARTICLES_PAGE_PREFIX}/1`}>すべての記事を見る</Link>
+        </button>
+      </div>
+    </main>
   );
 }
