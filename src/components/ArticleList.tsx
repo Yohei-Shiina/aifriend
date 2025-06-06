@@ -22,7 +22,7 @@ export default function ArticleList(props: ArticleListProps) {
           >
             <div className="relative w-full h-50">
               <Image
-                src={article.image_url}
+                src={article.image_url || "/randomImage1.webp"}
                 alt={article.title}
                 layout="fill" // Fill the parent container
                 objectFit="cover" // Ensure the image covers the container
@@ -36,12 +36,7 @@ export default function ArticleList(props: ArticleListProps) {
                 {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
               </time>
               <h2 className="card-title">{article.title}</h2>
-              <p className="text-sm line-clamp-2">
-                Revolutionary AI techniques are improving diagnostic accuracy in radiology
-                departments worldwide.Revolutionary AI techniques are improving diagnostic accuracy
-                in radiology departments worldwide.Revolutionary AI techniques are improving
-                diagnostic accuracy in radiology departments worldwide.
-              </p>
+              <p className="text-sm line-clamp-2">{article.description}</p>
             </div>
           </Link>
         ))}

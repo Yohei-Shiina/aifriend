@@ -11,8 +11,9 @@ datasource db {
 model Article {
   id         Int       @id @default(autoincrement())
   title      String    @db.VarChar(255)
-  content    String
-  image_url  String
+  description String   @default("") @db.VarChar(255)
+  content    String    @default("")
+  image_url  String    @default("") 
   created_at DateTime  @default(now()) @db.Timestamptz(6)
   updated_at DateTime  @default(now()) @db.Timestamptz(6)
   published_at DateTime?  @db.Timestamptz(6)
