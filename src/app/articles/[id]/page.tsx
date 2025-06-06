@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { fetchArticleById } from "@/lib/articleUtils";
 import Markdown from "@/components/Markdown";
 
-export default async function ArticlePage({ params }: { params: { id: string } }) {
+export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const article = await fetchArticleById(prisma, id);
 
