@@ -14,7 +14,7 @@ export default async function Home() {
   const articles = await fetchArticles(prisma);
 
   return (
-    <main className="space-y-6">
+    <main className="container mx-auto p-4 space-y-4">
       {/* TODO: uncomment when special articles or something else are ready */}
       {/* <div className="space-y-4 mb-6">
         {articles.slice(0, 3).map((article) => {
@@ -53,7 +53,7 @@ export default async function Home() {
         <SectionTitle title="新着AIニュース" description="さぁ、今日も新鮮な記事を見てみよう！" />
       </div>
       <ArticleList articles={articles.slice(0, topArticlesCount)} />
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center">
         <button className="btn btn-primary">
           <Link href={`${ARTICLES_PAGE_PREFIX}/1`}>すべての記事を見る</Link>
         </button>

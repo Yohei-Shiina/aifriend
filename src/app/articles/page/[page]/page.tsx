@@ -16,10 +16,10 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
   const articles = await fetchArticlesByPage(prisma, page, ITEMS_PER_PAGE);
 
   return (
-    <main className="space-y-6">
+    <div className="container mx-auto p-4 space-y-4">
       <SectionTitle title="すべての記事" description="過去のAIニュースはここから見てみよう！" />
       <ArticleList articles={articles} />
       <Pagination totalPages={totalPages} selectedPage={page} />
-    </main>
+    </div>
   );
 }

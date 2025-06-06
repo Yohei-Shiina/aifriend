@@ -55,3 +55,15 @@ export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, it
   })
   return articles.filter((article): article is FetchArticleResult => article.published_at !== null);
 }
+
+export const fetchArticleById = async (prisma: PrismaClient, id: string) => {
+  const article = await prisma.article.findUnique({
+    where: { id: Number(id) },
+  })
+
+  if (!article) {
+    throw new Error(`Article with id ${id} not found`);
+  }
+
+  return article
+}
