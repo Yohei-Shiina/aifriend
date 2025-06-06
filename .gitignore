@@ -45,6 +45,3 @@ next-env.d.ts
 
 # Prisma
 generated/prisma/
-
-# temp
-insert.ts
