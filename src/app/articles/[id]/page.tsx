@@ -13,6 +13,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
         <Image src={article.image_url} alt="" layout="fill" objectFit="cover" />
       </div>
       <div className="p-4">
+        <h1 className="text-xl md:text-4xl font-bold mb-6">{article.title}</h1>
         <Markdown content={article.content} />
       </div>
     </div>
