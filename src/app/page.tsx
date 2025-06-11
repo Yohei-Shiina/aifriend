@@ -13,6 +13,7 @@ const topArticlesCount = articlesConfig.topArticlesCount;
 
 export default async function Home() {
   const articles = await fetchArticles(prisma);
+
   if (articles.length === 0) notFound();
 
   return (

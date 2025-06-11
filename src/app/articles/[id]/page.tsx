@@ -8,9 +8,9 @@ import Markdown from "@/components/Markdown";
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const article = await fetchArticleById(prisma, id);
-  if (!article) {
-    notFound();
-  }
+
+  if (!article) notFound();
+
   return (
     <div className="container mx-auto max-w-3xl py-4">
       <div className="relative aspect-16/9 mb-6">
