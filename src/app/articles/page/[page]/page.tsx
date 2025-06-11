@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import articlesConfig from "@root/config/articles.json";
 
 import prisma from "@/lib/prisma";
@@ -14,7 +15,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
   const page = Number(strPage);
   const totalPages = await fetchPageCount(prisma, ITEMS_PER_PAGE);
   const articles = await fetchArticlesByPage(prisma, page, ITEMS_PER_PAGE);
-
+  if (articles.length === 0) notFound();
   return (
     <div className="container mx-auto p-4 space-y-4">
       <SectionTitle title="すべての記事" description="過去のAIニュースはここから見てみよう！" />
