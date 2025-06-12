@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { ARTICLES_PAGE_PREFIX } from "@root/config/routes";
 import prisma from "@/lib/prisma";
@@ -12,6 +13,8 @@ const topArticlesCount = articlesConfig.topArticlesCount;
 
 export default async function Home() {
   const articles = await fetchArticles(prisma);
+
+  if (articles.length === 0) notFound();
 
   return (
     <main className="container mx-auto p-4 space-y-4">
