@@ -9,9 +9,13 @@ export type FetchArticleResult = (Omit<Article, 'content' | 'created_at' | 'upda
  * @returns 
  */
 export const fetchPageCount = async (prisma: PrismaClient, itemsPerPage: number): Promise<number> => {
+  const now = new Date();
   try {
     const count = await prisma.article.count({
-      where: { published_at: { not: null } },
+      where: {
+        published_at: { lt: now },
+        is_published: true
+      },
     });
     return Math.ceil(count / itemsPerPage); // example: 10 articles / 4 items per page = 2.5 => rounded up to 3 pages
 
@@ -27,6 +31,7 @@ export const fetchPageCount = async (prisma: PrismaClient, itemsPerPage: number)
  * @returns 
  */
 export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleResult[]> => {
+  const now = new Date();
   try {
     const articles = await prisma.article.findMany({
       omit: {
@@ -34,7 +39,10 @@ export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleR
         created_at: true,
         updated_at: true,
       },
-      where: { published_at: { not: null } },
+      where: {
+        published_at: { lt: now },
+        is_published: true
+      },
       orderBy: { published_at: 'desc' }
     });
     return articles.filter((article): article is FetchArticleResult => article.published_at !== null);
@@ -53,9 +61,13 @@ export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleR
  */
 export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, itemsPerPage: number): Promise<FetchArticleResult[]> => {
   const skip = (page - 1) * itemsPerPage;
+  const now = new Date();
   try {
     const articles = await prisma.article.findMany({
-      where: { published_at: { not: null, } },
+      where: {
+        published_at: { lt: now, },
+        is_published: true
+      },
       omit: {
         content: true,
         created_at: true,
@@ -76,7 +88,11 @@ export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, it
 export const fetchArticleById = async (prisma: PrismaClient, id: string): Promise<Article | null> => {
   try {
     const article = await prisma.article.findUnique({
-      where: { id: Number(id) },
+      where: {
+        id: Number(id),
+        published_at: { lt: new Date() },
+        is_published: true
+      },
     });
     return article || null;
 
