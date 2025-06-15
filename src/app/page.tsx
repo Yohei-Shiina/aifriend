@@ -10,6 +10,8 @@ import SectionTitle from "@/components/SectionTitle";
 
 import ARTICLES_CONFIG from "@root/config/articles.json";
 
+export const dynamic = "force-dynamic"; // Force dynamic rendering to ensure fresh data on each request
+
 export default async function Home() {
   const articles = await fetchArticles(prisma);
 
