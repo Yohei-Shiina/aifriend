@@ -22,7 +22,7 @@ export default function ArticleList(props: ArticleListProps) {
           >
             <div className="relative w-full h-50">
               <Image
-                src={article.image_url || "/randomImage1.webp"}
+                src={article.image_url || "/img_not_found.png"}
                 alt={article.title}
                 layout="fill" // Fill the parent container
                 objectFit="cover" // Ensure the image covers the container
