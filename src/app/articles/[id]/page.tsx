@@ -15,7 +15,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
     <div className="container mx-auto max-w-3xl py-4">
       <div className="relative aspect-16/9 mb-6">
         <Image
-          src={article.image_url || "/img_not_found.svg"}
+          src={article.image_url || "/img_not_found.png"}
           alt={article.title}
           layout="fill"
           objectFit="cover"
