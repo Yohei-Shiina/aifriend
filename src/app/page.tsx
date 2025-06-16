@@ -8,8 +8,9 @@ import ArticleList from "@/components/ArticleList";
 import SectionTitle from "@/components/SectionTitle";
 // import Crousell from "@/components/Crousell";
 
-import articlesConfig from "@root/config/articles.json";
-const topArticlesCount = articlesConfig.topArticlesCount;
+import ARTICLES_CONFIG from "@root/config/articles.json";
+
+export const dynamic = "force-dynamic"; // Force dynamic rendering to ensure fresh data on each request
 
 export default async function Home() {
   const articles = await fetchArticles(prisma);
@@ -55,7 +56,7 @@ export default async function Home() {
       <div className="mb-6">
         <SectionTitle title="新着AIニュース" description="さぁ、今日も新鮮な記事を見てみよう！" />
       </div>
-      <ArticleList articles={articles.slice(0, topArticlesCount)} />
+      <ArticleList articles={articles.slice(0, ARTICLES_CONFIG.topArticlesCount)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
           <Link href={`${ARTICLES_PAGE_PREFIX}/1`}>すべての記事を見る</Link>
