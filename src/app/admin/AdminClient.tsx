@@ -3,19 +3,19 @@
 import React, { useState } from "react";
 
 export default function AdminClient() {
-  const [text, setText] = useState("");
+  const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (text.trim() === "") {
+    if (prompt.trim() === "") {
       alert("Please enter some text.");
       return;
     }
     const res = await fetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ input: text }),
+      body: JSON.stringify({ prompt }),
     });
     const data = await res.json();
     setResponse(data.result || JSON.stringify(data));
@@ -31,8 +31,8 @@ export default function AdminClient() {
       <form className="m-10 mb-2 flex flex-col gap-2" onSubmit={handleSubmit}>
         <textarea
           className="border-2 border-gray-300 p-2"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
           rows={4}
           placeholder="write instruction to create a new article"
         />
