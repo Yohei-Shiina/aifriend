@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* Header */}
         <Navbar />
         {/* Main content */}
-        <div className="shadow-xs">{children}</div>
+        <div className="shadow-xs bg-base-200">{children}</div>
         {/* Footer */}
         <footer className="p-4 container mx-auto">
           <aside>
