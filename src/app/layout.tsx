@@ -2,10 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { M_PLUS_Rounded_1c, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/Navbar";
+
+const MPlusRounded1c = M_PLUS_Rounded_1c({
+  variable: "--font-m-plus-rounded-1c",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="pastel" className="scroll-pt-16 scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${MPlusRounded1c.variable} ${geistSans.variable} ${geistMono.variable}`}>
         {/* Header */}
         <Navbar />
         {/* Main content */}
