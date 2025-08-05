@@ -7,8 +7,11 @@
   name: "pastel";
   default: true;
   --color-primary: oklch(0.8 0.1 257);
+  --color-primary-content: oklch(0.98 0.01 257);
   --color-secondary: oklch(0.75 0.14 326);
+  --color-secondary-content: oklch(0.98 0.01 326);
   --color-accent: oklch(0.75 0.12 22);
+  --color-accent-content: oklch(0.98 0.01 22);
 }
 
 html,

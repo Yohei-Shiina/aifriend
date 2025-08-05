@@ -59,7 +59,9 @@ export default async function Home() {
       <ArticleList articles={articles.slice(0, ARTICLES_CONFIG.topArticlesCount)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
-          <Link href={`${ARTICLES_PAGE_PREFIX}/1`}>すべての記事を見る</Link>
+          <Link href={`${ARTICLES_PAGE_PREFIX}/1`} className="primary-content">
+            すべての記事を見る
+          </Link>
         </button>
       </div>
     </main>
