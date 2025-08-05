@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
 
   const response = await client.responses.create({
     model: process.env.CHAT_MODEL || "gpt-4o-mini",
+    tool_choice: { type: "web_search_preview" },
     tools: [{ type: "web_search_preview", search_context_size: "low" }],
     input: prompt,
 
