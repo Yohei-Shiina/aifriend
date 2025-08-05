@@ -31,7 +31,7 @@ export default function ArticleList(props: ArticleListProps) {
             </div>
             <div className="card-body p-6">
               <time
-                className="text-xs text-neutral"
+                className="text-sm text-neutral"
                 dateTime={article.published_at.toLocaleString()}
               >
                 {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
