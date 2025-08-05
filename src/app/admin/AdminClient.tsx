@@ -3,22 +3,21 @@
 import React, { useState } from "react";
 
 export default function AdminClient() {
-  const [prompt, setPrompt] = useState("");
+  const [language, setLanguage] = useState("english");
   const [response, setResponse] = useState("");
+  const [isSent, setIsSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (prompt.trim() === "") {
-      alert("Please enter some text.");
-      return;
-    }
+    setIsSent(true);
     const res = await fetch("/api/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ language }),
     });
     const data = await res.json();
     setResponse(data.result || JSON.stringify(data));
+    setIsSent(false);
   };
 
   const handleLogout = async () => {
@@ -29,22 +28,37 @@ export default function AdminClient() {
   return (
     <>
       <form className="m-10 mb-2 flex flex-col gap-2" onSubmit={handleSubmit}>
-        <textarea
-          className="border-2 border-gray-300 p-2"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          rows={4}
-          placeholder="write instruction to create a new article"
-        />
-        <button className="min-w-30 m-auto btn btn-primary" type="submit">
-          Send
+        <div className="m-auto">
+          <input
+            id="english"
+            type="radio"
+            name="language"
+            value="english"
+            checked={language === "english"}
+            onChange={() => setLanguage("english")}
+          />
+          <label htmlFor="english">English</label>
+        </div>
+        <div className="m-auto">
+          <input
+            id="japanese"
+            type="radio"
+            name="language"
+            value="japanese"
+            checked={language === "japanese"}
+            onChange={() => setLanguage("japanese")}
+          />
+          <label htmlFor="japanese">Japanese</label>
+        </div>
+        <button className="min-w-30 m-auto btn btn-primary" type="submit" disabled={isSent}>
+          Generate
         </button>
       </form>
 
       <div className="m-10 mt-2 flex flex-col">
         {response && (
-          <div>
-            <strong>レスポンス:</strong>
+          <div className="container">
+            <strong>Response:</strong>
             <pre>{response}</pre>
           </div>
         )}
