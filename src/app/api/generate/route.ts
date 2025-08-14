@@ -6,7 +6,7 @@ import { z } from "zod";
 
 import prisma from "@/lib/prisma";
 import { scrape } from "@/lib/scrapeNews";
-import { combineText } from "@/lib/prompt";
+import { combineText, generateHeadingCitation } from "@/lib/prompt";
 import { generateImageByTitle } from "@/lib/generateImage";
 import { destroyImageFromCloudinary, uploadBufferToCloudinary } from "@/lib/cloudinary";
 
@@ -94,11 +94,7 @@ export async function POST(request: NextRequest) {
   const publicId = `blog_images/prod/${Date.now().toString()}`; // Unique public ID for the image
   const cloudResult = await uploadBufferToCloudinary(imageBuffer, publicId);
 
-  const formattedCitation: string = citations
-    .map((item: { urlTitle: string, url: string }) => {
-      return `- [${item.urlTitle}](${item.url})`
-    })
-    .join("\n");
+  const formattedCitation: string = generateHeadingCitation(citations);
 
   try {
     await prisma.article.create({

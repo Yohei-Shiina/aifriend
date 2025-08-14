@@ -54,13 +54,16 @@ export default async function Home() {
         <Crousell />
       </div> */}
       <div className="mb-6">
-        <SectionTitle title="新着AIニュース" description="さぁ、今日も新鮮な記事を見てみよう！" />
+        <SectionTitle
+          title="Latest AI News"
+          description="Let’s check out today’s fresh articles!"
+        />
       </div>
       <ArticleList articles={articles.slice(0, ARTICLES_CONFIG.topArticlesCount)} />
       <div className="flex justify-center">
         <button className="btn btn-primary">
           <Link href={`${ARTICLES_PAGE_PREFIX}/1`} className="primary-content">
-            すべての記事を見る
+            See More
           </Link>
         </button>
       </div>

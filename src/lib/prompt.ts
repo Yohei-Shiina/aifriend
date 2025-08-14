@@ -3,11 +3,11 @@ export const combineText = (texts: string[]) => {
 }
 
 // generate text using 
-export const generateHeadingCitation = (citations: { title: string, url: string }[]) => {
+export const generateHeadingCitation = (citations: { urlTitle: string, url: string }[]) => {
   const citationList = citations.map((item) => {
-    return `- [${item.title}](${item.url})`;
-  });
+    return `- [${item.urlTitle}](${item.url})`;
+  }).join("\n");
 
-  const heading = "## 関連URL";
-  return combineText([heading, ...citationList]);
+  const heading = "## Reference";
+  return combineText([heading, citationList]);
 }

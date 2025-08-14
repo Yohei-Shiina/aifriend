@@ -8,7 +8,8 @@ You MUST FOLLOW the instructions below and generate the article accordingly.
 - **Search in English only and find sources published after ${timeSearchAfter}.**
 - Your response must include annotations with urls that exist and accessible.
 - Return output in JSON format.
-- Return Content as instructed in **Content Structure & Style (Data-backed)** 
+- Return Content as instructed in **Content Structure & Style (Data-backed)**.
+- Talk like a friend. 
 
 # Topic
 Topic: Write an article about <${input}>

@@ -41,20 +41,30 @@ export default function RootLayout({
         {/* Main content */}
         <div className="shadow-xs bg-base-200">{children}</div>
         {/* Footer */}
-        <footer className="p-4 container mx-auto">
-          <aside>
-            <Link href="/">
-              <Image
-                src="/logo-vertical-transparent.svg"
-                className="mb-4"
-                width={150}
-                height={31.5}
-                alt=""
-              />
-            </Link>
-            <p className="font-bold">AI Media powered by AI</p>
-            <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
-          </aside>
+        <footer className="items-center p-6 text-base-content border-t border-base-300">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+              <div className="flex items-center gap-3">
+                <Link href="/">
+                  <Image
+                    src="/logo-vertical-transparent.svg"
+                    className="mb-4"
+                    width={150}
+                    height={31.5}
+                    alt=""
+                  />
+                </Link>
+              </div>
+
+              <div className="text-center text-sm md:text-base font-medium">
+                AI Media powered by AI
+              </div>
+
+              <div className="text-sm text-gray-500 text-center md:text-right">
+                © 2025 All rights reserved
+              </div>
+            </div>
+          </div>
         </footer>
       </body>
     </html>

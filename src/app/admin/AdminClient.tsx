@@ -39,7 +39,7 @@ export default function AdminClient() {
           />
           <label htmlFor="english">English</label>
         </div>
-        <div className="m-auto">
+        {/* <div className="m-auto">
           <input
             id="japanese"
             type="radio"
@@ -49,7 +49,7 @@ export default function AdminClient() {
             onChange={() => setLanguage("japanese")}
           />
           <label htmlFor="japanese">Japanese</label>
-        </div>
+        </div> */}
         <button className="min-w-30 m-auto btn btn-primary" type="submit" disabled={isSent}>
           Generate
         </button>
@@ -57,9 +57,9 @@ export default function AdminClient() {
 
       <div className="m-10 mt-2 flex flex-col">
         {response && (
-          <div className="container">
+          <div className="container mx-auto px-4">
             <strong>Response:</strong>
-            <pre>{response}</pre>
+            <code className="text-wrap">{response}</code>
           </div>
         )}
         <button className="min-w-30 m-auto btn btn-accent" onClick={handleLogout}>
