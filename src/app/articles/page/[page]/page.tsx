@@ -15,7 +15,7 @@ export default async function ArticlesPage({ params }: { params: Promise<{ page:
   if (articles.length === 0) notFound();
   return (
     <div className="container mx-auto p-4 space-y-4">
-      <SectionTitle title="すべての記事" description="過去のAIニュースはここから見てみよう！" />
+      <SectionTitle title="Previous Articles" description="Check out past AI news here!" />
       <ArticleList articles={articles} />
       <Pagination totalPages={totalPages} selectedPage={page} />
     </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import dayjs from "dayjs";
 
 import { FetchArticleResult } from "@/lib/articleUtils";
+import TextGradient from "./TextGradient";
 
 type ArticleListProps = {
   articles: FetchArticleResult[];
@@ -30,13 +31,20 @@ export default function ArticleList(props: ArticleListProps) {
             </div>
             <div className="card-body p-6">
               <time
-                className="text-xs text-base-content"
+                className="text-sm text-neutral"
                 dateTime={article.published_at.toLocaleString()}
               >
                 {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
               </time>
-              <h2 className="card-title">{article.title}</h2>
-              <p className="text-sm line-clamp-2">{article.description}</p>
+              <h2 className="card-title">
+                <TextGradient
+                  from="from-primary"
+                  via="via-secondary"
+                  to="to-accent"
+                  text={article.title}
+                />
+              </h2>
+              <p className="text-sm line-clamp-2 text-neutral">{article.description}</p>
             </div>
           </Link>
         ))}

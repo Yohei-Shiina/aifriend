@@ -46,7 +46,7 @@ export default function Navbar() {
                 <Link href={ROOT_PATH}>TOP</Link>
               </li>
               <li>
-                <Link href={ABOUT_PATH}>AIFriendとは</Link>
+                <Link href={ABOUT_PATH}>What is AIFriend?</Link>
               </li>
             </ul>
           </div>
