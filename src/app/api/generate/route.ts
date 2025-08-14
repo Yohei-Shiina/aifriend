@@ -13,6 +13,8 @@ import { destroyImageFromCloudinary, uploadBufferToCloudinary } from "@/lib/clou
 import { promptEN } from "@root/config/prompt";
 import ARTICLES_CONFIG from "@root/config/articles.json";
 
+export const maxDuration = 60;
+
 const SCRAPE_DEFAULT_COUNT = 1;
 
 const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET);
