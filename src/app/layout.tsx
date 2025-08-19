@@ -51,7 +51,7 @@ export default function RootLayout({
                     className="mb-4"
                     width={150}
                     height={31.5}
-                    alt=""
+                    alt="AI Media Logo"
                   />
                 </Link>
               </div>

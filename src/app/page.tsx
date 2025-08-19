@@ -13,60 +13,73 @@ import ARTICLES_CONFIG from "@root/config/articles.json";
 export const dynamic = "force-dynamic"; // Force dynamic rendering to ensure fresh data on each request
 
 export default async function Home() {
-  const articles = await fetchArticles(prisma);
+  try {
+    const articles = await fetchArticles(prisma);
 
-  if (articles.length === 0) notFound();
+    if (!articles || articles.length === 0) {
+      notFound();
+    }
 
-  return (
-    <main className="container mx-auto p-4 space-y-4">
-      {/* TODO: uncomment when special articles or something else are ready */}
-      {/* <div className="space-y-4 mb-6">
-        {articles.slice(0, 3).map((article) => {
-          return (
-            <div
-              key={article.id}
-              className="card card-side bg-base-100 shadow-sm rounded-lg overflow-hidden"
-            >
-              <div className="relative h-20 w-30 flex-shrink-0">
-                <Image
-                  src={article.image_url}
-                  alt={article.image_url}
-                  layout="fill"
-                  objectFit="cover"
-                />
+    return (
+      <main className="container mx-auto p-4 space-y-4">
+        {/* TODO: uncomment when special articles or something else are ready */}
+        {/* <div className="space-y-4 mb-6">
+          {articles.slice(0, 3).map((article) => {
+            return (
+              <div
+                key={article.id}
+                className="card card-side bg-base-100 shadow-sm rounded-lg overflow-hidden"
+              >
+                <div className="relative h-20 w-30 flex-shrink-0">
+                  <Image
+                    src={article.image_url}
+                    alt={article.image_url}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="card-body p-0 px-4">
+                  <h2 className="card-title">{article.title}</h2>
+                  <time
+                    className="text-xs text-base-content"
+                    dateTime={article.published_at.toLocaleString()}
+                  >
+                    {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
+                  </time>
+                </div>
               </div>
-              <div className="card-body p-0 px-4">
-                <h2 className="card-title">{article.title}</h2>
-                <time
-                  className="text-xs text-base-content"
-                  dateTime={article.published_at.toLocaleString()}
-                >
-                  {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
-                </time>
-              </div>
-            </div>
-          );
-        })}
-      </div> */}
+            );
+          })}
+        </div> */}
 
-      {/* TODO: uncomment when special articles or something else are ready */}
-      {/* <div className="mb-14">
-        <Crousell />
-      </div> */}
-      <div className="mb-6">
-        <SectionTitle
-          title="Latest AI News"
-          description="Let’s check out today’s fresh articles!"
-        />
-      </div>
-      <ArticleList articles={articles.slice(0, ARTICLES_CONFIG.topArticlesCount)} />
-      <div className="flex justify-center">
-        <button className="btn btn-primary">
-          <Link href={`${ARTICLES_PAGE_PREFIX}/1`} className="primary-content">
-            See More
-          </Link>
-        </button>
-      </div>
-    </main>
-  );
+        {/* TODO: uncomment when special articles or something else are ready */}
+        {/* <div className="mb-14">
+          <Crousell />
+        </div> */}
+        <div className="mb-6">
+          <SectionTitle
+            title="Latest AI News"
+            description="Let's check out today's fresh articles!"
+          />
+        </div>
+        <ArticleList articles={articles.slice(0, ARTICLES_CONFIG.topArticlesCount)} />
+        <div className="flex justify-center">
+          <button className="btn btn-primary">
+            <Link href={`${ARTICLES_PAGE_PREFIX}/1`} className="primary-content">
+              See More
+            </Link>
+          </button>
+        </div>
+      </main>
+    );
+  } catch (error) {
+    console.error("Error loading home page:", error);
+    return (
+      <main className="container mx-auto p-4 space-y-4">
+        <div className="alert alert-error">
+          <span>Failed to load articles. Please try again later.</span>
+        </div>
+      </main>
+    );
+  }
 }

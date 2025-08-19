@@ -7,6 +7,7 @@ export const prisma =
   globalForPrisma._prisma ||
   new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : [],
+    errorFormat: 'pretty',
   });
 
 // This is a work-around for the issue of hot reloading in Next.js

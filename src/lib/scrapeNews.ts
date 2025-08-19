@@ -2,18 +2,21 @@ import * as cheerio from 'cheerio';
 
 const URL_TECHCRUNCH_AI = 'https://techcrunch.com/category/artificial-intelligence/';
 const FETCH_COUNT = 5;
-export const scrape = async (fetchCount: number = FETCH_COUNT): Promise<{
+
+export type ScrapedArticle = {
   title: string;
   age: string;
-}[] | {
+};
+
+export type ScrapingError = {
   error: string;
   status: number;
-  details?: undefined;
-} | {
-  error: string;
-  details: string;
-  status?: undefined;
-}> => {
+  details?: string;
+};
+
+export type ScrapingResult = ScrapedArticle[] | ScrapingError;
+
+export const scrape = async (fetchCount: number = FETCH_COUNT): Promise<ScrapingResult> => {
   const url = URL_TECHCRUNCH_AI;
 
   try {
@@ -25,7 +28,10 @@ export const scrape = async (fetchCount: number = FETCH_COUNT): Promise<{
     });
 
     if (!res.ok) {
-      return { error: 'Failed to fetch TechCrunch page', status: res.status }
+      return {
+        error: 'Failed to fetch TechCrunch page',
+        status: res.status
+      };
     }
 
     const html = await res.text();
@@ -43,6 +49,10 @@ export const scrape = async (fetchCount: number = FETCH_COUNT): Promise<{
 
     return articles;
   } catch (error) {
-    return { error: 'Scraping failed', details: String(error) };
+    return {
+      error: 'Scraping failed',
+      status: 500,
+      details: String(error)
+    };
   }
 }
