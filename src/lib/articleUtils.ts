@@ -6,6 +6,7 @@ export type FetchArticleResult = (Omit<Article, 'content' | 'created_at' | 'upda
 /**
  * Fetch the total number of pages
  * @param prisma 
+ * @param itemsPerPage 
  * @returns 
  */
 export const fetchPageCount = async (prisma: PrismaClient, itemsPerPage: number): Promise<number> => {
@@ -57,6 +58,7 @@ export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleR
  * Fetch articles by page
  * @param prisma 
  * @param page 
+ * @param itemsPerPage 
  * @returns 
  */
 export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, itemsPerPage: number): Promise<FetchArticleResult[]> => {

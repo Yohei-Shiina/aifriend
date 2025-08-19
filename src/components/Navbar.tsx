@@ -16,7 +16,7 @@ export default function Navbar() {
               className=""
               width={150}
               height={31.5}
-              alt=""
+              alt="AI Media Logo"
             />
           </Link>
         </div>

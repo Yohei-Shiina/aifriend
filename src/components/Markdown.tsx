@@ -62,7 +62,7 @@ export default function Markdown({ content }: { content: string }) {
             const { children, href } = props;
             return (
               <a
-                href={href}
+                href={href || "#"}
                 className="text-primary! hover:text-secondary!"
                 target="_blank"
                 rel="noopener noreferrer"

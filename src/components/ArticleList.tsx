@@ -25,8 +25,8 @@ export default function ArticleList(props: ArticleListProps) {
               <Image
                 src={article.image_url || "/img_not_found.png"}
                 alt={article.title}
-                layout="fill" // Fill the parent container
-                objectFit="cover" // Ensure the image covers the container
+                fill
+                className="object-cover"
               />
             </div>
             <div className="card-body p-6">

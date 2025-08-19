@@ -4,7 +4,7 @@ import ARTICLES_CONFIG from "@root/config/articles.json";
 import prisma from "@/lib/prisma";
 import { fetchPageCount, fetchArticlesByPage } from "@/lib/articleUtils";
 import ArticleList from "@/components/ArticleList";
-import Pagination from "@/components/Pagniation";
+import Pagination from "@/components/Pagination";
 import SectionTitle from "@/components/SectionTitle";
 
 export default async function ArticlesPage({ params }: { params: Promise<{ page: string }> }) {
