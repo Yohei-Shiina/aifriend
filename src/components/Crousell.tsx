@@ -30,7 +30,7 @@ export default async function Crousell() {
               className="carousel-item relative h-60 w-full rounded-lg overflow-hidden"
             >
               <Image
-                src={article.image_url || "/img_not_found.png"}
+                src={article.image?.secure_url || "/img_not_found.png"}
                 alt={article.title || "Article thumbnail"}
                 fill
                 className="object-cover"

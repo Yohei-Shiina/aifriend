@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
-import { FetchArticleResult } from "@/lib/articleUtils";
+import { ArticleWithImage } from "@/types/article";
 import TextGradient from "./TextGradient";
 
 type ArticleListProps = {
-  articles: FetchArticleResult[];
+  articles: ArticleWithImage[];
 };
 
 export default function ArticleList(props: ArticleListProps) {
@@ -23,7 +23,7 @@ export default function ArticleList(props: ArticleListProps) {
           >
             <div className="relative w-full h-50">
               <Image
-                src={article.image_url || "/img_not_found.png"}
+                src={article.image?.secure_url || "/img_not_found.png"}
                 alt={article.title}
                 fill
                 className="object-cover"
@@ -32,9 +32,9 @@ export default function ArticleList(props: ArticleListProps) {
             <div className="card-body p-6">
               <time
                 className="text-sm text-neutral"
-                dateTime={article.published_at.toLocaleString()}
+                dateTime={article.published_at!.toLocaleString()}
               >
-                {dayjs(article.published_at.toLocaleString()).format("YYYY年M月D日")}
+                {dayjs(article.published_at!.toLocaleString()).format("YYYY年M月D日")}
               </time>
               <h2 className="card-title">
                 <TextGradient

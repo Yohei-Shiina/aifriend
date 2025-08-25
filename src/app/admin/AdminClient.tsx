@@ -1,17 +1,28 @@
 "use client";
-
 import React, { useState } from "react";
 
-export default function AdminClient() {
+import { type Article } from "@root/generated/prisma/client";
+import Link from "next/link";
+import { DeleteResult } from "./action";
+
+type AdminClientProps = {
+  articles: Article[];
+  onDeleteArticlesHandler: (deletingIds: Array<number>) => Promise<DeleteResult>;
+};
+
+export default function AdminClient(props: AdminClientProps) {
   const [language, setLanguage] = useState("english");
   const [response, setResponse] = useState("");
   const [isSent, setIsSent] = useState(false);
-  const [error, setError] = useState("");
+  const [generateError, setGenerateError] = useState("");
+  const [deleteError, setDeleteError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [selected, setSelected] = useState(new Set<number>());
+
+  const handleGenerate = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSent(true);
-    setError("");
+    setGenerateError("");
 
     try {
       const res = await fetch("/api/generate", {
@@ -29,7 +40,7 @@ export default function AdminClient() {
       setResponse(data.result || JSON.stringify(data));
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
-      setError(errorMessage);
+      setGenerateError(errorMessage);
       console.error("Generation error:", err);
     } finally {
       setIsSent(false);
@@ -49,9 +60,21 @@ export default function AdminClient() {
     }
   };
 
+  const handlDeleteArticle = async (ids: number[]) => {
+    const idsToDelete = new Set<number>(ids);
+    setSelected(idsToDelete);
+    const res = await props.onDeleteArticlesHandler([...idsToDelete]);
+    console.log(res);
+    if (!res.ok) {
+      setDeleteError(res.message);
+    } else {
+      setDeleteError("");
+    }
+  };
+
   return (
     <>
-      <form className="m-10 mb-2 flex flex-col gap-2" onSubmit={handleSubmit}>
+      <form className="m-10 mb-2 flex flex-col gap-2" onSubmit={handleGenerate}>
         <div className="m-auto">
           <input
             id="english"
@@ -79,10 +102,10 @@ export default function AdminClient() {
         </button>
       </form>
 
-      {error && (
+      {generateError && (
         <div className="m-10 mt-2 flex flex-col">
           <div className="alert alert-error">
-            <span>Error: {error}</span>
+            <span>Error: {generateError}</span>
           </div>
         </div>
       )}
@@ -98,6 +121,53 @@ export default function AdminClient() {
           Logout
         </button>
       </div>
+
+      <ul className="divide-y rounded border">
+        <li className="flex flex-col">
+          <button
+            className="btn btn-error text-sm mx-auto my-2"
+            onClick={() => handlDeleteArticle([...selected])}
+          >
+            Delete Selected Articles
+          </button>
+          {deleteError && (
+            <div className="m-10 mt-2 flex flex-col">
+              <div className="alert alert-error">
+                <span>Error: {deleteError}</span>
+              </div>
+            </div>
+          )}
+        </li>
+        {props.articles.map((a) => (
+          <li key={a.id} className="flex items-center justify-between p-3">
+            <label className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                checked={selected.has(a.id)}
+                onChange={(e) => {
+                  const isChecked = e.target.checked;
+                  const id = a.id;
+                  setSelected((prev) => {
+                    const next = new Set(prev);
+                    if (isChecked) {
+                      next.add(id);
+                    } else {
+                      next.delete(id);
+                    }
+                    return next;
+                  });
+                }}
+              />
+              <span className="font-medium">
+                <Link href={`/articles/${a.id}`}>{a.title}</Link>
+              </span>
+            </label>
+            <button onClick={() => handlDeleteArticle([a.id])} className="btn btn-error text-sm">
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
