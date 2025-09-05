@@ -34,7 +34,7 @@ export default function ArticleList(props: ArticleListProps) {
                 className="text-sm text-neutral"
                 dateTime={article.published_at!.toLocaleString()}
               >
-                {dayjs(article.published_at!.toLocaleString()).format("YYYY年M月D日")}
+                {dayjs(article.published_at!.toLocaleString()).format("DD/MM/YYYY")}
               </time>
               <h2 className="card-title">
                 <TextGradient
