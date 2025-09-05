@@ -1,5 +1,5 @@
 
-import { ArticleWithImage } from '@/types/article';
+import { ArticleWithImage, ArticleWithImageForList } from '@/types/article';
 import { type PrismaClient } from '@root/generated/prisma/client';
 
 /**
@@ -30,7 +30,7 @@ export const fetchPageCount = async (prisma: PrismaClient, itemsPerPage: number)
  * @param prisma 
  * @returns 
  */
-export const fetchArticles = async (prisma: PrismaClient): Promise<Omit<ArticleWithImage, "content" | "created_at" | "updated_at">[]> => {
+export const fetchArticles = async (prisma: PrismaClient): Promise<ArticleWithImageForList[]> => {
   const now = new Date();
   try {
     const articles = await prisma.article.findMany({
@@ -93,6 +93,7 @@ export const fetchArticleById = async (prisma: PrismaClient, id: string): Promis
       },
       include: { image: true }
     });
+    console.log(article);
     return article || null;
 
   } catch (error) {

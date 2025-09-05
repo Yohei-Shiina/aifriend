@@ -8,3 +8,5 @@ export const articleWithImageArgs =
 
 export type ArticleWithImage =
   Prisma.ArticleGetPayload<typeof articleWithImageArgs>
+
+export type ArticleWithImageForList = Omit<ArticleWithImage, "content" | "created_at" | "updated_at">

@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
-import { ArticleWithImage } from "@/types/article";
+import { ArticleWithImageForList } from "@/types/article";
 import TextGradient from "./TextGradient";
 
 type ArticleListProps = {
-  articles: ArticleWithImage[];
+  articles: ArticleWithImageForList[];
 };
 
 export default function ArticleList(props: ArticleListProps) {
