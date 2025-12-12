@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { destroyImageFromCloudinary } from "@/lib/cloudinary";
 
 
-export type DeleteResult = { ok: true, data: number } | { ok: false | false, code: string, message: string };
+export type DeleteResult = { ok: true, data: number } | { ok: false, code: string, message: string };
 export const deleteArticles = async (ids: Array<number>): Promise<DeleteResult> => {
   if (!ids || ids.length === 0) {
     return { ok: false, code: "NOT_FOUND", message: "No item selected" };
