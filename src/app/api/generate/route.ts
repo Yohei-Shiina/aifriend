@@ -125,6 +125,12 @@ export async function POST(request: NextRequest) {
           is_published: true,
           published_at: new Date(),
           image_url: cloudResult.secure_url,
+          image: {
+            create: {
+              public_id: cloudResult.public_id,
+              secure_url: cloudResult.secure_url,
+            },
+          },
         },
       });
       return NextResponse.json({ result: raw });
