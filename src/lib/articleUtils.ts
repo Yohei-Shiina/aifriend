@@ -1,7 +1,6 @@
 
-import { type PrismaClient, type Article } from '@root/generated/prisma/client';
-
-export type FetchArticleResult = (Omit<Article, 'content' | 'created_at' | 'updated_at'> & { published_at: Date });
+import { ArticleWithImage, ArticleWithImageForList } from '@/types/article';
+import { type PrismaClient } from '@root/generated/prisma/client';
 
 /**
  * Fetch the total number of pages
@@ -31,22 +30,23 @@ export const fetchPageCount = async (prisma: PrismaClient, itemsPerPage: number)
  * @param prisma 
  * @returns 
  */
-export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleResult[]> => {
+export const fetchArticles = async (prisma: PrismaClient): Promise<ArticleWithImageForList[]> => {
   const now = new Date();
   try {
     const articles = await prisma.article.findMany({
+      where: {
+        published_at: { lt: now },
+        is_published: true
+      },
+      include: { image: true },
       omit: {
         content: true,
         created_at: true,
         updated_at: true,
       },
-      where: {
-        published_at: { lt: now },
-        is_published: true
-      },
       orderBy: { published_at: 'desc' }
     });
-    return articles.filter((article): article is FetchArticleResult => article.published_at !== null);
+    return articles.filter((article) => article.published_at !== null);
 
   } catch (error) {
     console.error('Error fetching articles:', error);
@@ -61,7 +61,7 @@ export const fetchArticles = async (prisma: PrismaClient): Promise<FetchArticleR
  * @param itemsPerPage 
  * @returns 
  */
-export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, itemsPerPage: number): Promise<FetchArticleResult[]> => {
+export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, itemsPerPage: number): Promise<ArticleWithImage[]> => {
   const skip = (page - 1) * itemsPerPage;
   const now = new Date();
   try {
@@ -70,16 +70,12 @@ export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, it
         published_at: { lt: now, },
         is_published: true
       },
-      omit: {
-        content: true,
-        created_at: true,
-        updated_at: true,
-      },
+      include: { image: true },
       skip,
       take: itemsPerPage,
       orderBy: { published_at: 'desc' },
     })
-    return articles.filter((article): article is FetchArticleResult => article.published_at !== null);
+    return articles.filter((article) => article.published_at !== null);
 
   } catch (error) {
     console.error('Error fetching articles by page:', error);
@@ -87,7 +83,7 @@ export const fetchArticlesByPage = async (prisma: PrismaClient, page: number, it
   }
 }
 
-export const fetchArticleById = async (prisma: PrismaClient, id: string): Promise<Article | null> => {
+export const fetchArticleById = async (prisma: PrismaClient, id: string): Promise<ArticleWithImage | null> => {
   try {
     const article = await prisma.article.findUnique({
       where: {
@@ -95,7 +91,9 @@ export const fetchArticleById = async (prisma: PrismaClient, id: string): Promis
         published_at: { lt: new Date() },
         is_published: true
       },
+      include: { image: true }
     });
+    console.log(article);
     return article || null;
 
   } catch (error) {

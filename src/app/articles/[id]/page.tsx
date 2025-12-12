@@ -19,7 +19,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
       </h1>
       <div className="relative aspect-16/9 mb-6">
         <Image
-          src={article.image_url || "/img_not_found.png"}
+          src={article.image?.secure_url || "/img_not_found.png"}
           alt={article.title}
           layout="fill"
           objectFit="cover"
