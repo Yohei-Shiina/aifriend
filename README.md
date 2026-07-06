@@ -1,5 +1,7 @@
 # AIFriend – AI-Powered AI News Platform
 
+<p align="right"><a href="./README.ja.md">日本語</a> ・ <strong>English</strong></p>
+
 ![Project Status: Archived](https://img.shields.io/badge/Status-Archived_(PoC)-lightgrey)
 
 **🔗 Live Demo:** https://aifriend-dusky.vercel.app
@@ -57,7 +59,7 @@ The goal is not to become a real product, but to demonstrate how I design, imple
 
 - **Citation-aware content**  
   - The prompt encourages the model to include references to original sources.  
-  - The app appends a simple “Sources / Citations” section to the article body so readers can trace where the information came from.
+  - The app appends a simple "Sources / Citations" section to the article body so readers can trace where the information came from.
 
 - **Database-backed articles**  
   - Generated articles are stored in PostgreSQL via Prisma.  
@@ -99,7 +101,7 @@ The goal is not to become a real product, but to demonstrate how I design, imple
 
 This project is **archived as a Proof of Concept**.
 
-I’m not actively developing new features, but I keep the code and demo public as a portfolio piece to show:
+I'm not actively developing new features, but I keep the code and demo public as a portfolio piece to show:
 
 - how I approach full-stack architecture with Next.js  
 - how I integrate external services like OpenAI and Supabase  
